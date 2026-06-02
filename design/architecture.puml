@@ -8,13 +8,18 @@ abstract Pixel <<user defined>> {
 
 Pixel ..> Color
 
-struct FrameBuffer {
+struct Size {
     uint width
     uint height
+}
+
+struct FrameBuffer {
+    Size size
     Pixel pixelArray[width][height]
 }
 
 FrameBuffer --> Pixel
+FrameBuffer ..> Size
 
 enum Status
 
@@ -23,14 +28,9 @@ struct Coord {
     int y
 }
 
-struct Size {
-    uint width
-    uint height
-}
-
 struct Pattern {
     Size size
-    uint bitMap[(size.width/sizeof(int))+1][(size.height/sizeof(int))+1]
+    uint bitMap[size.width][size.height]
 }
 
 class Primitive {
