@@ -49,7 +49,7 @@ typedef struct {
  *
  * Bad returns can be generated under the following circumstances:
  *  1. A null pointer is passed in either @c fb or @c pattern (@ref LOL_NULLPTR)
- *  2. No part of the @c pattern exists within the Frame Buffer for the given @c coord (@ref LOL_BADPARAM)
+ *  2. No part of the @c pattern exists within the Frame Buffer for the given @c coord (@ref LOL_BADBOUNDS)
  *  3. Any inner function call returns a non-success status (@ref LOL_INNERFAIL). Non-success status is also sent.
  *
  *  @param fb: Frame buffer in which to apply pattern.
@@ -66,7 +66,7 @@ AxLOL_Status_t AxLOL_applyPattern(AxLOL_FrameBuffer fb, AxLOL_Pattern pattern, A
  *
  * Bad returns can be generated under the following circumstances:
  *  1. A null pointer is passed in either @c fb or @c pattern (@ref LOL_NULLPTR)
- *  2. No part of the @c size exists within the Frame Buffer for the given @c coord (@ref LOL_BADPARAM)
+ *  2. No part of the @c size exists within the Frame Buffer for the given @c coord (@ref LOL_BADBOUNDS)
  *  3. Any inner function call returns a non-success status (@ref LOL_INNERFAIL). Non-success status is also sent.
  *
  *  @param fb: Frame buffer to fill with block.

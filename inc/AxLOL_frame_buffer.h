@@ -52,7 +52,7 @@ typedef struct {
 /*! @brief Frame Buffer type definition.
  *
  * Type definition for a fully-fledged FrameBuffer in the AxLOL library. Note that the frame must be a
- * properly-allocated pixel array of size size.width * size.height.
+ * properly-allocated pixel array of size `size.width * size.height`.
  *
  *  @warning Other than checks for NULL, this struct will assume you have correctly allocated the frame.
  *

@@ -104,8 +104,8 @@ void test_applyPattern_success_edgeUpperRight(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_applyPattern(fb_test, pattern_test, coord_test, color_test));
 }
 
-void test_applyPattern_fail_badParam_above(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_applyPattern_fail_badBounds_above(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const uint8_t bitmap[1][8] = {{0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55}};
@@ -118,8 +118,8 @@ void test_applyPattern_fail_badParam_above(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_applyPattern(fb_test, pattern_test, coord_test, color_test));
 }
 
-void test_applyPattern_fail_badParam_below(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_applyPattern_fail_badBounds_below(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const uint8_t bitmap[1][8] = {{0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55}};
@@ -132,8 +132,8 @@ void test_applyPattern_fail_badParam_below(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_applyPattern(fb_test, pattern_test, coord_test, color_test));
 }
 
-void test_applyPattern_fail_badParam_right(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_applyPattern_fail_badBounds_right(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const uint8_t bitmap[1][8] = {{0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55}};
@@ -146,8 +146,8 @@ void test_applyPattern_fail_badParam_right(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_applyPattern(fb_test, pattern_test, coord_test, color_test));
 }
 
-void test_applyPattern_fail_badParam_left(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_applyPattern_fail_badBounds_left(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const uint8_t bitmap[1][8] = {{0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55}};
@@ -315,8 +315,8 @@ void test_fillBlock_success_edgeUpperRight(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_fillBlock(fb_test, blockSize_test, coord_test, color_test));
 }
 
-void test_fillBlock_fail_badParam_above(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_fillBlock_fail_badBounds_above(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const AxLOL_Size blockSize_test = {.width = TEST_WIDTH_SMALL, .height = TEST_HEIGHT_SMALL};
@@ -328,8 +328,8 @@ void test_fillBlock_fail_badParam_above(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_fillBlock(fb_test, blockSize_test, coord_test, color_test));
 }
 
-void test_fillBlock_fail_badParam_below(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_fillBlock_fail_badBounds_below(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const AxLOL_Size blockSize_test = {.width = TEST_WIDTH_SMALL, .height = TEST_HEIGHT_SMALL};
@@ -341,8 +341,8 @@ void test_fillBlock_fail_badParam_below(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_fillBlock(fb_test, blockSize_test, coord_test, color_test));
 }
 
-void test_fillBlock_fail_badParam_right(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_fillBlock_fail_badBounds_right(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const AxLOL_Size blockSize_test = {.width = TEST_WIDTH_SMALL, .height = TEST_HEIGHT_SMALL};
@@ -354,8 +354,8 @@ void test_fillBlock_fail_badParam_right(void) {
   TEST_ASSERT_EQUAL(status_expected, AxLOL_fillBlock(fb_test, blockSize_test, coord_test, color_test));
 }
 
-void test_fillBlock_fail_badParam_left(void) {
-  const AxLOL_Status_t status_expected = LOL_BADPARAM;
+void test_fillBlock_fail_badBounds_left(void) {
+  const AxLOL_Status_t status_expected = LOL_BADBOUNDS;
 
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};
   const AxLOL_Size blockSize_test = {.width = TEST_WIDTH_SMALL, .height = TEST_HEIGHT_SMALL};
@@ -485,10 +485,10 @@ int main(void) {
   RUN_TEST(test_applyPattern_success_allIn);
   RUN_TEST(test_applyPattern_success_edgeLowerLeft);
   RUN_TEST(test_applyPattern_success_edgeUpperRight);
-  RUN_TEST(test_applyPattern_fail_badParam_above);
-  RUN_TEST(test_applyPattern_fail_badParam_below);
-  RUN_TEST(test_applyPattern_fail_badParam_right);
-  RUN_TEST(test_applyPattern_fail_badParam_left);
+  RUN_TEST(test_applyPattern_fail_badBounds_above);
+  RUN_TEST(test_applyPattern_fail_badBounds_below);
+  RUN_TEST(test_applyPattern_fail_badBounds_right);
+  RUN_TEST(test_applyPattern_fail_badBounds_left);
   RUN_TEST(test_applyPattern_fail_badParam_patternWidth);
   RUN_TEST(test_applyPattern_fail_badParam_patternHeight);
   RUN_TEST(test_applyPattern_fail_nullPointerFrame);
@@ -498,10 +498,10 @@ int main(void) {
   RUN_TEST(test_fillBlock_success_allIn);
   RUN_TEST(test_fillBlock_success_edgeLowerLeft);
   RUN_TEST(test_fillBlock_success_edgeUpperRight);
-  RUN_TEST(test_fillBlock_fail_badParam_above);
-  RUN_TEST(test_fillBlock_fail_badParam_below);
-  RUN_TEST(test_fillBlock_fail_badParam_right);
-  RUN_TEST(test_fillBlock_fail_badParam_left);
+  RUN_TEST(test_fillBlock_fail_badBounds_above);
+  RUN_TEST(test_fillBlock_fail_badBounds_below);
+  RUN_TEST(test_fillBlock_fail_badBounds_right);
+  RUN_TEST(test_fillBlock_fail_badBounds_left);
   RUN_TEST(test_fillBlock_fail_nullPointer);
   RUN_TEST(test_fillBlock_fail_setColor_first);
   RUN_TEST(test_fillBlock_fail_setColor_last);

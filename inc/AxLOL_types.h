@@ -28,12 +28,16 @@
  *
  *  @var AxLOL_Status_e::LOL_INNERFAIL
  * Internal function call failed. See accompanying fault for more details.
+ *
+ *  @var AxLOL_Status_e::LOL_BADBOUNDS
+ * Operation failed as the requested operation exists entirely out of bounds for the given frame buffer.
  */
 typedef enum {
   LOL_SUCCESS = 0x0000,
   LOL_NULLPTR = 0x0001,
   LOL_BADPARAM = 0x0002,
   LOL_INNERFAIL = 0x0004,
+  LOL_BADBOUNDS = 0x0008,
 } AxLOL_Status_e;
 
 /*! @brief Status type definition.

@@ -37,7 +37,7 @@ AxLOL_Status_t AxLOL_applyPattern(AxLOL_FrameBuffer fb, AxLOL_Pattern pattern, A
     return LOL_NULLPTR;
 
   if (!areBoundsSane(fb, coord, pattern.size))
-    return LOL_BADPARAM;
+    return LOL_BADBOUNDS;
 
   if ((pattern.size.width == 0) || (pattern.size.height == 0))
     return LOL_BADPARAM;
@@ -66,7 +66,7 @@ AxLOL_Status_t AxLOL_fillBlock(AxLOL_FrameBuffer fb, AxLOL_Size size, AxLOL_Coor
     return LOL_NULLPTR;
 
   if (!areBoundsSane(fb, coord, size))
-    return LOL_BADPARAM;
+    return LOL_BADBOUNDS;
 
   AxLOL_Status_t setColor_status = LOL_SUCCESS;
 
