@@ -31,6 +31,9 @@
  *
  *  @var AxLOL_Status_e::LOL_BADBOUNDS
  * Operation failed as the requested operation exists entirely out of bounds for the given frame buffer.
+ *
+ *  @var AxLOL_Status_e::LOL_BADCHAR
+ * Operation failed as the character provided is not an ASCII character.
  */
 typedef enum {
   LOL_SUCCESS = 0x0000,
@@ -38,6 +41,7 @@ typedef enum {
   LOL_BADPARAM = 0x0002,
   LOL_INNERFAIL = 0x0004,
   LOL_BADBOUNDS = 0x0008,
+  LOL_BADCHAR = 0x0010,
 } AxLOL_Status_e;
 
 /*! @brief Status type definition.

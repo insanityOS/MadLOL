@@ -1561,7 +1561,7 @@ AxLOL_Status_t AxLOL_putChar(AxLOL_FrameBuffer fb, char c, AxLOL_Coord coord, Ax
     return LOL_NULLPTR;
 
   if (c & 0x80)
-    return LOL_BADPARAM;
+    return LOL_BADCHAR;
 
   pattern = fontMap_active->char_bitmaps[(uint8_t)c];
 

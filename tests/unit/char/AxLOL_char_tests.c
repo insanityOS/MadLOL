@@ -59,7 +59,7 @@ void test_putChar_success(void) {
 }
 
 void test_putChar_fail_badChar(void) {
-  AxLOL_Status_t status_expected = LOL_BADPARAM;
+  AxLOL_Status_t status_expected = LOL_BADCHAR;
 
   const AxLOL_Coord coord_test = {0, 0};
   const AxLOL_Size frameSize_test = {.width = TEST_WIDTH_LARGE, .height = TEST_HEIGHT_LARGE};

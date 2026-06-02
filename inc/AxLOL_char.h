@@ -48,7 +48,7 @@ AxLOL_Status_t AxLOL_setFont(AxLOL_FontMap* fontMap);
  * location @c coord in @c color. Note that the character pattern may be truncated if the coordinate places it partially
  * out of bounds. If the character is fully out of bounds or is otherwise badly defined, @ref AxLOL_applyPattern() will
  * return a failure status, which will be augmented with @ref LOL_INNERFAIL. If the character is outside of standard
- * ASCII definitions (i.e. above 127), this function will return @ref LOL_BADPARAM (no @ref LOL_INNERFAIL). If @c fb is
+ * ASCII definitions (i.e. above 127), this function will return @ref LOL_BADCHAR (no @ref LOL_INNERFAIL). If @c fb is
  * NULL, this returns @ref LOL_NULLPTR (no @ref LOL_INNERFAIL).
  *
  *  @param fb: Frame Buffer in which to print a character.
