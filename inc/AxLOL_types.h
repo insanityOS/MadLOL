@@ -11,19 +11,29 @@
 
 /*! @brief Status enumeration definition.
  *
- * Enumeration for AxLOL Status returns. For variable declaration, please use
- * @ref AxLOL_Status_t instead; this definition is intended for value
- * definitions.
+ * Enumeration for AxLOL Status returns. For variable declaration, please use @ref AxLOL_Status_t instead; this
+ * definition is intended for value definitions.
+ *
+ * Operates in a bitwise fashion as faults are not mutually exclusive.
  *
  *  @var AxLOL_Status_e::LOL_SUCCESS
  * Operation reports successfully. See specific functions for further details.
  *
  *  @var AxLOL_Status_e::LOL_NULLPTR
  * Operation failed due to an unexpected null pointer.
+ *
+ *  @var AxLOL_Status_e::LOL_BADPARAM
+ * Operation failed because of a parameter sanitization failure. See specific function for details as to what this
+ * means.
+ *
+ *  @var AxLOL_Status_e::LOL_INNERFAIL
+ * Internal function call failed. See accompanying fault for more details.
  */
 typedef enum {
-  LOL_SUCCESS = 0,
-  LOL_NULLPTR = 1,
+  LOL_SUCCESS = 0x0000,
+  LOL_NULLPTR = 0x0001,
+  LOL_BADPARAM = 0x0002,
+  LOL_INNERFAIL = 0x0004,
 } AxLOL_Status_e;
 
 /*! @brief Status type definition.
