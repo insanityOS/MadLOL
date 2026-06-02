@@ -1,29 +1,29 @@
-/*! @file AxLOL_string.h
- *  @brief AxLOL string operations and definitions.
+/*! @file MadLOL_string.h
+ *  @brief MadLOL string operations and definitions.
  *
- * Definitions for AxLOL string operations. Primarily printing of strings. Note that only fixed-width strings are
+ * Definitions for MadLOL string operations. Primarily printing of strings. Note that only fixed-width strings are
  * supported.
  */
 
-#ifndef AXLOL_STRING_H
-#define AXLOL_STRING_H
+#ifndef MADLOL_STRING_H
+#define MADLOL_STRING_H
 
-#include "AxLOL_char.h"
+#include "MadLOL_char.h"
 
-/*! @brief String definition for AxLOL.
+/*! @brief String definition for MadLOL.
  *
- * String definition for AxLOL. Strings must be fixed-width; null termination is ignored.
+ * String definition for MadLOL. Strings must be fixed-width; null termination is ignored.
  *
- *  @var AxLOL_String::len
+ *  @var MadLOL_String::len
  * Length of the string in characters.
  *
- *  @var AxLOL_String::str
+ *  @var MadLOL_String::str
  * Pointer to actual string; must be at least of size @c len or out-of-bounds reads will occur.
  */
 typedef struct {
   int32_t len;
   char* str;
-} AxLOL_String;
+} MadLOL_String;
 
 /*! @brief Print a string.
  *
@@ -33,7 +33,7 @@ typedef struct {
  * If the string contains an invalid character (i.e. non-ASCII), this operation will fail with @ref LOL_BADCHAR upon
  * reaching the character (which can result in a partial print). ASCII control characters are treated as regular
  * printable characters without regard to their normal control functionality.
- * Uses the current active font map as set by @ref AxLOL_setFont().
+ * Uses the current active font map as set by @ref MadLOL_setFont().
  *
  *  @param fb: Frame Buffer to write into.
  *  @param str: String to write into frame buffer.
@@ -41,6 +41,6 @@ typedef struct {
  *  @param color: Color to draw string as.
  *  @returns Returns @ref LOL_SUCCESS if successful, and an appropriate failure mode otherwise.
  */
-AxLOL_Status_t AxLOL_printString(AxLOL_FrameBuffer fb, AxLOL_String str, AxLOL_Coord coord, AxLOL_Color color);
+MadLOL_Status_t MadLOL_printString(MadLOL_FrameBuffer fb, MadLOL_String str, MadLOL_Coord coord, MadLOL_Color color);
 
 #endif

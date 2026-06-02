@@ -1,6 +1,6 @@
 PROJECT_ROOT  = $(realpath ../../..)
 MAKE_INC      = $(PROJECT_ROOT)/MakeInc
-UUT           = AxLOL_ref_setColor
+UUT           = MadLOL_ref_setColor
 TEST          = $(UUT)_tests
 BUILD_DIR    := build
 

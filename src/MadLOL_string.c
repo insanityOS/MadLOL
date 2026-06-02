@@ -1,14 +1,14 @@
-#include "AxLOL_string.h"
-#include "AxLOL_char.h"
-#include "AxLOL_types.h"
+#include "MadLOL_string.h"
+#include "MadLOL_char.h"
+#include "MadLOL_types.h"
 
 // Cheekily grabbing the active font map to manage setting the coordinate for the next character.
-extern AxLOL_FontMap* fontMap_active;
+extern MadLOL_FontMap* fontMap_active;
 
-AxLOL_Status_t AxLOL_printString(AxLOL_FrameBuffer fb, AxLOL_String str, AxLOL_Coord coord, AxLOL_Color color) {
-  AxLOL_Status_t status_persistent = LOL_BADBOUNDS;
-  AxLOL_Status_t status_immediate = LOL_SUCCESS;
-  AxLOL_Coord coord_next = coord;
+MadLOL_Status_t MadLOL_printString(MadLOL_FrameBuffer fb, MadLOL_String str, MadLOL_Coord coord, MadLOL_Color color) {
+  MadLOL_Status_t status_persistent = LOL_BADBOUNDS;
+  MadLOL_Status_t status_immediate = LOL_SUCCESS;
+  MadLOL_Coord coord_next = coord;
 
   if ((!(fb.frame)) || (!(str.str)))
     return LOL_NULLPTR;
@@ -22,7 +22,7 @@ AxLOL_Status_t AxLOL_printString(AxLOL_FrameBuffer fb, AxLOL_String str, AxLOL_C
     if (0x80 & c_next)
       return LOL_BADCHAR;
 
-    status_immediate = AxLOL_putChar(fb, c_next, coord_next, color);
+    status_immediate = MadLOL_putChar(fb, c_next, coord_next, color);
 
     if (status_immediate & (LOL_BADCHAR | LOL_NULLPTR | LOL_BADPARAM))
       return (status_immediate | LOL_INNERFAIL);

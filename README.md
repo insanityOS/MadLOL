@@ -1,7 +1,6 @@
 # Introduction
-
-Awesome eXtreme Lightweight Outlining Library (AxLOL) is a library intended to support drawing frame buffers using
-primitive elements. 
+Mostly Awesome Digital Lightweight Observations Library (MadLOL) is a library intended to support drawing frame buffers
+using primitive elements. 
 
 ## Goals and Constraints
 The primary constraints for this library are memory safety and minimized memory footprint. In these interests, the 
@@ -45,7 +44,7 @@ Alternatively, you may build this using whatever the hell you like.
 This does not pull in any libraries.
 
 ## Integration
-Users should provide a definition of `AxLOL_applyColor()`. Seriously, that's all you need.
+Users should provide a definition of `MadLOL_applyColor()`. Seriously, that's all you need.
 
 ## Default targets
 Some Make targets may be of interests:

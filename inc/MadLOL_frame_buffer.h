@@ -1,70 +1,70 @@
-/*! @file AxLOL_frame_buffer.h
+/*! @file MadLOL_frame_buffer.h
  *  @brief FrameBuffer type definitions
  *
  * Definition for Frame Buffer type.
  */
 
-#ifndef AXLOL_FRAME_BUFFER_H
-#define AXLOL_FRAME_BUFFER_H
+#ifndef MADLOL_FRAME_BUFFER_H
+#define MADLOL_FRAME_BUFFER_H
 
-#include "AxLOL_types.h"
+#include "MadLOL_types.h"
 
-#ifndef AXLOL_CUSTOM_PIXEL
+#ifndef MADLOL_CUSTOM_PIXEL
 
 /*! @brief Reference color definition.
  *
  * Reference color definition upon which this library is tested. 5-6-5 format is selected as it represents an unusual
  * case, and seems like a reasonable challenge to the author of this library.
  *
- *  @var AxLOL_Color::R
+ *  @var MadLOL_Color::R
  * Red channel definition
  *
- *  @var AxLOL_Color::G
+ *  @var MadLOL_Color::G
  * Green channel definition
  *
- *  @var AxLOL_Color:B
+ *  @var MadLOL_Color:B
  * Blue channel definition
  */
 typedef struct __attribute__((__packed__)) {
   uint8_t B : 5;
   uint8_t G : 6;
   uint8_t R : 5;
-} AxLOL_Color;
+} MadLOL_Color;
 
 /*! @brief Reference pixel definition.
  *
  * Reference implementation for the pixels upon which the library operates.
  * This does not support transparency.
  *
- *  @var AxLOL_Pixel::color
+ *  @var MadLOL_Pixel::color
  * Color of the current pixel.
  */
 typedef struct {
-  AxLOL_Color color;
-} AxLOL_Pixel;
+  MadLOL_Color color;
+} MadLOL_Pixel;
 
 #else
-#include "AxLOL_pixel.h"
+#include "MadLOL_pixel.h"
 #endif
 
 /*! @brief Frame Buffer type definition.
  *
- * Type definition for a fully-fledged FrameBuffer in the AxLOL library. Note that the frame must be a
+ * Type definition for a fully-fledged FrameBuffer in the MadLOL library. Note that the frame must be a
  * properly-allocated pixel array of size `size.width * size.height`.
  *
  *  @warning Other than checks for NULL, this struct will assume you have correctly allocated the frame.
  *
- *  @var AxLOL_FrameBuffer::size
+ *  @var MadLOL_FrameBuffer::size
  * Size of the FrameBuffer
  *
- *  @var AxLOL_FrameBuffer::frame
- * Pointer to array of AxLOL Pixels of @c width by @c height. This must be a standard, 1-dimensional array to preserve
+ *  @var MadLOL_FrameBuffer::frame
+ * Pointer to array of MadLOL Pixels of @c width by @c height. This must be a standard, 1-dimensional array to preserve
  * contiguity in memory.
  */
 typedef struct {
-  AxLOL_Size size;
-  AxLOL_Pixel* frame;
-} AxLOL_FrameBuffer;
+  MadLOL_Size size;
+  MadLOL_Pixel* frame;
+} MadLOL_FrameBuffer;
 
 /*! @brief Declaration for fundamental color application function.
  *
@@ -81,6 +81,6 @@ typedef struct {
  *  @param color: Color to apply to the @c pixel.
  *  @returns Returns @ref LOL_SUCCESS if operation succeeded, @ref LOL_NULLPTR if @c pixel was a null pointer.
  */
-AxLOL_Status_t AxLOL_setColor(AxLOL_Pixel* pixel, AxLOL_Color color);
+MadLOL_Status_t MadLOL_setColor(MadLOL_Pixel* pixel, MadLOL_Color color);
 
 #endif

@@ -1,9 +1,9 @@
-#ifndef AXLOL_BMP_H
-#define AXLOL_BMP_H
+#ifndef MADLOL_BMP_H
+#define MADLOL_BMP_H
 
 #include <stdbool.h>
 #include <stddef.h>
-#include "AxLOL_frame_buffer.h"
+#include "MadLOL_frame_buffer.h"
 
 /*! @brief Generate a BMP file.
  *
@@ -13,6 +13,6 @@
  *  @param filename: Filename for the generated BMP image.
  *  @warning @c filename is NOT sanitized internally.
  */
-bool AxLOL_createBMP(AxLOL_FrameBuffer fb, const char filename[]);
+bool MadLOL_createBMP(MadLOL_FrameBuffer fb, const char filename[]);
 
 #endif

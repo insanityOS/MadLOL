@@ -1,20 +1,20 @@
-/*! @file AxLOL_primitive.h
- *  @brief AxLOL primitive operations.
+/*! @file MadLOL_primitive.h
+ *  @brief MadLOL primitive operations.
  *
- * Definitions for fundamental AxLOL operations, such as blanking a Frame Buffer, setting solid colors in a block, and
+ * Definitions for fundamental MadLOL operations, such as blanking a Frame Buffer, setting solid colors in a block, and
  * applying bit patterns.
  */
 
-#ifndef AXLOL_PRIMITIVE_H
-#define AXLOL_PRIMITIVE_H
+#ifndef MADLOL_PRIMITIVE_H
+#define MADLOL_PRIMITIVE_H
 
-#include "AxLOL_frame_buffer.h"
-#include "AxLOL_types.h"
+#include "MadLOL_frame_buffer.h"
+#include "MadLOL_types.h"
 
 /*! @brief Pattern type definition.
  *
  * Pattern type definition. The bitmap must be defined as a 2D array of size [ceil(size.width/8)] by [size.height] in
- * which each @ref AxLOL_Pixel is a single bit in the pattern. In other words, the size is the size in individual
+ * which each @ref MadLOL_Pixel is a single bit in the pattern. In other words, the size is the size in individual
  * pixels. The Patterns are defined by the top row first, building downwards. As an example, the literal:
  *
  * {{0x18},{0x3C},{0x66},{0x66},{0x7E},{0x66},{0x66},{0x00}}
@@ -32,16 +32,16 @@
  * 0x00 0        0
  *       76543210
  *
- *  @var AxLOL_Pattern::size
+ *  @var MadLOL_Pattern::size
  * Size of the pattern in Pixels.
  *
- *  @var AxLOL_Pattern::bitmap
+ *  @var MadLOL_Pattern::bitmap
  * Pointer to the 2D bit array in memory.
  */
 typedef struct {
-  AxLOL_Size size;
+  MadLOL_Size size;
   uint8_t* bitmap;
-} AxLOL_Pattern;
+} MadLOL_Pattern;
 
 /*! @brief Apply Pattern into the Frame Buffer.
  *
@@ -58,7 +58,10 @@ typedef struct {
  *  @param color: Color to apply on pattern.
  *  @returns Returns @ref LOL_SUCCESS if operation completed successfully, relevant failure status otherwise.
  */
-AxLOL_Status_t AxLOL_applyPattern(AxLOL_FrameBuffer fb, AxLOL_Pattern pattern, AxLOL_Coord coord, AxLOL_Color color);
+MadLOL_Status_t MadLOL_applyPattern(MadLOL_FrameBuffer fb,
+                                    MadLOL_Pattern pattern,
+                                    MadLOL_Coord coord,
+                                    MadLOL_Color color);
 
 /*! @brief Fill a block in the Frame Buffer with the specified color.
  *
@@ -76,7 +79,7 @@ AxLOL_Status_t AxLOL_applyPattern(AxLOL_FrameBuffer fb, AxLOL_Pattern pattern, A
  *  @returns Returns @ref LOL_SUCCESS
  *  @post @c fb is completely painted @c color.
  */
-AxLOL_Status_t AxLOL_fillBlock(AxLOL_FrameBuffer fb, AxLOL_Size size, AxLOL_Coord coord, AxLOL_Color color);
+MadLOL_Status_t MadLOL_fillBlock(MadLOL_FrameBuffer fb, MadLOL_Size size, MadLOL_Coord coord, MadLOL_Color color);
 
 /*! @brief Fill the Frame Buffer with the specified color.
  *
@@ -85,9 +88,9 @@ AxLOL_Status_t AxLOL_fillBlock(AxLOL_FrameBuffer fb, AxLOL_Size size, AxLOL_Coor
  *  @param fb: Frame buffer to paint.
  *  @param color: Color to paint @c fb.
  *  @returns Returns @ref LOL_NULLPTR if @c fb contains a null pointer, @ref LOL_SUCCESS otherwise. May return @ref
- *  LOL_INNERFAIL if call to @ref AxLOL_setColor() fails.
+ *  LOL_INNERFAIL if call to @ref MadLOL_setColor() fails.
  *  @post @c fb is completely painted @c color.
  */
-AxLOL_Status_t AxLOL_paintBuffer(AxLOL_FrameBuffer fb, AxLOL_Color color);
+MadLOL_Status_t MadLOL_paintBuffer(MadLOL_FrameBuffer fb, MadLOL_Color color);
 
 #endif

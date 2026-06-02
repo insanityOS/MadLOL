@@ -1,6 +1,6 @@
 PROJECT_ROOT  = $(realpath ../..)
 MAKE_INC      = $(PROJECT_ROOT)/MakeInc
-TARGET        = AxLOL_test
+TARGET        = MadLOL_test
 BUILD_DIR    := build
 CFLAGS       += -g -O0
 
@@ -12,11 +12,11 @@ include $(MAKE_INC)/default_goals.mk
 
 $(BUILD_DIR)/$(TARGET).elf:\
 	$(BUILD_DIR)/$(TARGET).o\
-	$(BUILD_DIR)/AxLOL_char.o\
-	$(BUILD_DIR)/AxLOL_string.o\
-	$(BUILD_DIR)/AxLOL_ref_setColor.o\
-	$(BUILD_DIR)/AxLOL_primitive.o\
-	$(BUILD_DIR)/AxLOL_bmp.o
+	$(BUILD_DIR)/MadLOL_char.o\
+	$(BUILD_DIR)/MadLOL_string.o\
+	$(BUILD_DIR)/MadLOL_ref_setColor.o\
+	$(BUILD_DIR)/MadLOL_primitive.o\
+	$(BUILD_DIR)/MadLOL_bmp.o
 
 test: $(BUILD_DIR)/$(TARGET).elf
 	@rm -f test_image.bmp
