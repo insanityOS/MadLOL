@@ -14,6 +14,7 @@ LCOV_TEST        = $(BUILD_DIR)/coverage_test.info
 LCOV_EXCLUDES   += --exclude "*tests*" --exclude "*CMock*" --exclude "*Unity*" 
 MOCK_DIR         = $(BUILD_DIR)/mocks
 MOCK_RB          = $(PROJECT_ROOT)/CMock/lib/cmock.rb
+INC_DIR          = $(PROJECT_ROOT)/inc
 
 INC             += -I$(PROJECT_ROOT)/Unity/src
 INC             += -I$(PROJECT_ROOT)/CMock/src
@@ -23,15 +24,16 @@ VPATH           += $(PROJECT_ROOT)/CMock/src
 VPATH           += $(MOCK_DIR)
 
 CFLAGS          += -g --coverage 
+CFLAGS          += -DCMOCK_MEM_DYNAMIC
 LDFLAGS         += --coverage
 
-test: $(BUILD_DIR)/$(TEST).elf
+test: mocks $(BUILD_DIR)/$(TEST).elf
 	@lcov --capture --initial --directory $(BUILD_DIR) --output-file $(LCOV_BASE) >/dev/null
 	@printf "\e[31m\nExecuting $(TEST).elf\n\n\e[0m"
 	@./build/$(TEST).elf
 
 # This is the expected goal recipe that must be specified for each mock.
-$(MOCK_DIR)/mock%.h $(MOCK_DIR)/mock%.c:
+$(MOCK_DIR)/Mock%.h $(MOCK_DIR)/Mock%.c:
 	@mkdir -p $(MOCK_DIR)
 	@printf "\e[33mGenerating mock for $^\e[0m\n"
 	@printf "require '$(MOCK_RB)'\nCMock.new(:plugins => [:ignore, :ignore_arg, :expect_any_args, :array, :callback, :return_thru_ptr], :mock_path => \"$(MOCK_DIR)\").setup_mocks([\"$<\"])\n" | ruby >/dev/null

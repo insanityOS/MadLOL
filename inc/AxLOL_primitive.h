@@ -13,9 +13,24 @@
 
 /*! @brief Pattern type definition.
  *
- * Pattern type definition. The bitmap must be defined as a 2D array of size [size.width/8] by [size.height/8] in which
- * each @ref AxLOL_Pixel is a single bit in the pattern. If @c size.width is not a multiple of 8, the unused bits in the
- * final byte in each row are wasted.
+ * Pattern type definition. The bitmap must be defined as a 2D array of size [ceil(size.width/8)] by [size.height] in
+ * which each @ref AxLOL_Pixel is a single bit in the pattern. In other words, the size is the size in individual
+ * pixels. The Patterns are defined by the top row first, building downwards. As an example, the literal:
+ *
+ * {{0x18},{0x3C},{0x66},{0x66},{0x7E},{0x66},{0x66},{0x00}}
+ *
+ * which represents the letter 'A', is rendered like so:
+ *
+ *       76543210
+ * 0x18 7   XX   7
+ * 0x3C 6  XXXX  6
+ * 0x66 5 XX  XX 5
+ * 0x66 4 XX  XX 4
+ * 0x7E 3 XXXXXX 3
+ * 0x66 2 XX  XX 2
+ * 0x66 1 XX  XX 1
+ * 0x00 0        0
+ *       76543210
  *
  *  @var AxLOL_Pattern::size
  * Size of the pattern in Pixels.
@@ -49,12 +64,16 @@ AxLOL_Status_t AxLOL_applyPattern(AxLOL_FrameBuffer fb, AxLOL_Pattern pattern, A
  *
  * Places a block of the given color into the Frame Buffer.
  *
+ * Bad returns can be generated under the following circumstances:
+ *  1. A null pointer is passed in either @c fb or @c pattern (@ref LOL_NULLPTR)
+ *  2. No part of the @c size exists within the Frame Buffer for the given @c coord (@ref LOL_BADPARAM)
+ *  3. Any inner function call returns a non-success status (@ref LOL_INNERFAIL). Non-success status is also sent.
+ *
  *  @param fb: Frame buffer to fill with block.
  *  @param size: Size of the block to fill.
  *  @param coord: Where to place the block.
  *  @param color: Color to paint the block.
- *  @returns Returns @ref LOL_NULLPTR if @c fb contains a null pointer, @ref LOL_SUCCESS otherwise. May return @ref
- *  LOL_INNERFAIL if call to @ref AxLOL_setColor() fails.
+ *  @returns Returns @ref LOL_SUCCESS
  *  @post @c fb is completely painted @c color.
  */
 AxLOL_Status_t AxLOL_fillBlock(AxLOL_FrameBuffer fb, AxLOL_Size size, AxLOL_Coord coord, AxLOL_Color color);

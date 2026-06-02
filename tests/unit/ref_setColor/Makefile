@@ -16,3 +16,4 @@ include $(MAKE_INC)/unit_tests.mk
 include $(MAKE_INC)/options.mk
 include $(MAKE_INC)/default_goals.mk
 
+mocks:

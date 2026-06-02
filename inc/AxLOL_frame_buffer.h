@@ -27,7 +27,7 @@
  *  @var AxLOL_Color:B
  * Blue channel definition
  */
-typedef struct {
+typedef struct __attribute__((__packed__)) {
   uint8_t R : 5;
   uint8_t G : 6;
   uint8_t B : 5;
@@ -52,7 +52,7 @@ typedef struct {
 /*! @brief Frame Buffer type definition.
  *
  * Type definition for a fully-fledged FrameBuffer in the AxLOL library. Note that the frame must be a
- * properly-allocated 2-dimensional array.
+ * properly-allocated pixel array of size size.width * size.height.
  *
  *  @warning Other than checks for NULL, this struct will assume you have correctly allocated the frame.
  *
@@ -60,7 +60,8 @@ typedef struct {
  * Size of the FrameBuffer
  *
  *  @var AxLOL_FrameBuffer::frame
- * Pointer to 2-D array of AxLOL Pixels of @c width by @c height.
+ * Pointer to array of AxLOL Pixels of @c width by @c height. This must be a standard, 1-dimensional array to preserve
+ * contiguity in memory.
  */
 typedef struct {
   AxLOL_Size size;
