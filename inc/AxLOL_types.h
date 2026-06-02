@@ -16,7 +16,7 @@
  * definitions.
  *
  *  @var AxLOL_Status_e::LOL_SUCCESS
- * Operation reports successfully. Seee specific functions for further details.
+ * Operation reports successfully. See specific functions for further details.
  *
  *  @var AxLOL_Status_e::LOL_NULLPTR
  * Operation failed due to an unexpected null pointer.
@@ -33,5 +33,34 @@ typedef enum {
  * For actual values of this type, see the enumeration @ref AxLOL_Status_e.
  */
 typedef uint16_t AxLOL_Status_t;
+
+/*! @brief Size definition.
+ *
+ * Definition of a Size in AxLOL library. This is intended to be used for defining the absolute size of patterns and
+ * buffers. For defining locations in a FrameBuffer or Pattern, see @ref AxLOL_Coord.
+ *
+ *  @var AxLOL_Size::width
+ * Width of the specified object in pixels.
+ *
+ *  @var AxLOL_Size::height
+ * Height of the specified object in pixels.
+ */
+typedef struct {
+  uint32_t width;
+  uint32_t height;
+} AxLOL_Size;
+
+/*! @brief Coordinate definition.
+ *
+ *  @var AxLOL_Coord::x
+ * X coordinate for the specified point (X pixels to the right of the origin)
+ *
+ *  @var AxLOL_Coord::y
+ * Y coordinate for the specified point (Y pixels above the origin)
+ */
+typedef struct {
+  int32_t x;
+  int32_t y;
+} AxLOL_Coord;
 
 #endif

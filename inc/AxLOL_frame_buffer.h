@@ -56,22 +56,18 @@ typedef struct {
  *
  *  @warning Other than checks for NULL, this struct will assume you have correctly allocated the frame.
  *
- *  @var AxLOL_Pixel::width
- * Width of the frame buffer in pixels.
+ *  @var AxLOL_FrameBuffer::size
+ * Size of the FrameBuffer
  *
- *  @var AxLOL_Pixel::height
- * Height of the frame buffer in pixels.
- *
- *  @var AxLOL_Pixel::frame
+ *  @var AxLOL_FrameBuffer::frame
  * Pointer to 2-D array of AxLOL Pixels of @c width by @c height.
  */
 typedef struct {
-  uint32_t width;
-  uint32_t height;
+  AxLOL_Size size;
   AxLOL_Pixel* frame;
 } AxLOL_FrameBuffer;
 
-/*! brief Declaration for fundamental color application function.
+/*! @brief Declaration for fundamental color application function.
  *
  * Declaration for the base color application function. Must be defined by the user if the reference pixel
  * implementation is not used.
