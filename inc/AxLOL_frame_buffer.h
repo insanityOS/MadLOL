@@ -9,9 +9,7 @@
 
 #include "AxLOL_types.h"
 
-#define AXLOL_CREATE_REFERENCE_PIXEL
-
-#ifdef AXLOL_CREATE_REFERENCE_PIXEL
+#ifndef AXLOL_CUSTOM_PIXEL
 
 /*! @brief Reference color definition.
  *
@@ -28,9 +26,9 @@
  * Blue channel definition
  */
 typedef struct __attribute__((__packed__)) {
-  uint8_t R : 5;
-  uint8_t G : 6;
   uint8_t B : 5;
+  uint8_t G : 6;
+  uint8_t R : 5;
 } AxLOL_Color;
 
 /*! @brief Reference pixel definition.

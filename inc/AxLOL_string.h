@@ -36,7 +36,7 @@ typedef struct {
  * Uses the current active font map as set by @ref AxLOL_setFont().
  *
  *  @param fb: Frame Buffer to write into.
- *  @parma str: String to write into frame buffer.
+ *  @param str: String to write into frame buffer.
  *  @param coord: Bottom leftmost pixel in the string block to write.
  *  @param color: Color to draw string as.
  *  @returns Returns @ref LOL_SUCCESS if successful, and an appropriate failure mode otherwise.
