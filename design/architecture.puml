@@ -1,0 +1,77 @@
+@startuml
+abstract Color <<user defined>>
+
+abstract Pixel <<user defined>> {
+    Color color
+    void setColor(Color)
+}
+
+Pixel ..> Color
+
+struct FrameBuffer {
+    uint width
+    uint height
+    Pixel pixelArray[width][height]
+}
+
+FrameBuffer --> Pixel
+
+enum Status
+
+struct Coord {
+    int x
+    int y
+}
+
+struct Size {
+    uint width
+    uint height
+}
+
+struct Pattern {
+    Size size
+    uint bitMap[(size.width/sizeof(int))+1][(size.height/sizeof(int))+1]
+}
+
+class Primitive {
+    Status applyPattern(FrameBuffer*, Pattern, Coord, Color)
+    Status fillBlock(FrameBuffer*, Size, Coord, Color)
+    Status paintBuffer(FrameBuffer*, Color)
+}
+
+Primitive ..> FrameBuffer
+Primitive ..> Status
+Primitive ..> Coord
+Primitive ..> Size
+Primitive ..> Pattern
+
+struct FontMap {
+    Pattern asciiPattern[128]
+}
+
+class AsciiChar {
+    FontMap* activeFontMap
+    Status setFont(FontMap*)
+    Status putChar(FrameBuffer*, char, Coord, Color)
+}
+
+AsciiChar ..> FontMap
+AsciiChar --> Primitive
+
+struct String {
+    int len
+    char str[len]
+}
+
+class AsciiStr {
+    Status printStr(FrameBuffer*, String, Coord, Color)
+    Status printStr_offset(FrameBuffer*, String, Coord, int offset, Color)
+}
+
+AsciiStr ..> String
+AsciiStr --> AsciiChar
+
+class Utilities {
+    Status shiftPattern(*Pattern returnPattern, Coord shiftAmount, Pattern pattern)
+}
+@enduml
