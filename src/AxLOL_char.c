@@ -1221,12 +1221,12 @@ AxLOL_FontMap AxLOL_defaultFont = {.char_bitmaps = {
                                                        .bitmap =
                                                            (uint8_t[8]){
                                                                0x00,
+                                                               0x00,
+                                                               0x18,
+                                                               0x24,
                                                                0x3C,
-                                                               0x42,
-                                                               0x7E,
-                                                               0x40,
-                                                               0x42,
-                                                               0x3C,
+                                                               0x20,
+                                                               0x1C,
                                                                0x00,
                                                            }},
                                        (AxLOL_Pattern){.size = DEF_SIZE,
