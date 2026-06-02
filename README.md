@@ -47,6 +47,14 @@ This does not pull in any libraries.
 ## Integration
 Users should provide a definition of `AxLOL_applyColor()`. Seriously, that's all you need.
 
+## Default targets
+Some Make targets may be of interests:
+
+1. `make lcov`: Generates coverage data. Report may be viewed in `build/lcov/index.html` using most browsers.
+1. `make docs`: Generates the Doxygen annotations. Docs may be viewed in `docs/html/index.html` using most browsers.
+1. `make diagrams`: Generate the PlantUML design diagrams. Diagrams are generated as SVG format images, and may be
+   viewed in `build/diagrams` using any image viewer that supports SVG format.
+
 # FAQs
 ## Why?
 Why? You come here of your own volition, take a look at my _art_, and dare to ask me "why?"

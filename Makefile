@@ -29,8 +29,11 @@ format:
 check-format:
 	@find $(FORMAT_DIRS) $(FORMAT_PAT) | xargs clang-format --dry-run -Werror --style=file:.clang-format
 
+docs:
+	doxygen
+
 clean:
 	@$(foreach test, $(TESTS), make -C $(test) clean || exit $?;)
-	rm -rf build
+	rm -rf build docs
 
-.PHONY: tests
+.PHONY: tests doxygen clean
