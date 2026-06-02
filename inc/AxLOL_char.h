@@ -21,6 +21,11 @@ typedef struct {
   AxLOL_Pattern char_bitmaps[128];
 } AxLOL_FontMap;
 
+/*! @brief Default reference font pack.
+ *
+ * Default reference font pack. Exposed so users may revert to using the default font after changing the active font, if
+ * so desired.
+ */
 extern AxLOL_FontMap AxLOL_defaultFont;
 
 /*! @brief Set the active font map.
