@@ -14,7 +14,7 @@ VPATH += $(PROJECT_ROOT)/src
 CC       = gcc
 OBJCOPY  = objcopy
 GDB      = gdb
-CFLAGS  += -Wall -Werror
+CFLAGS  += -Wall -Werror -Wno-packed-bitfield-compat
 LDFLAGS += -Wl,-Map=$*.map
 
 # Common coverage options
