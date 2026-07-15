@@ -4,6 +4,7 @@
 #include "MadLOL_frame_buffer.h"
 #include "MadLOL_primitive.h"
 #include "MadLOL_string.h"
+#include "MadLOL_transform_buffer.h"
 #include "MadLOL_types.h"
 
 #define IMAGE_WIDTH 320
@@ -11,11 +12,21 @@
 
 int main(void) {
   static MadLOL_Pixel imageFrame[IMAGE_WIDTH * IMAGE_HEIGHT] = {0};
+  static MadLOL_Pixel imageFrame90[IMAGE_WIDTH * IMAGE_HEIGHT] = {0};
+  static MadLOL_Pixel imageFrame180[IMAGE_WIDTH * IMAGE_HEIGHT] = {0};
+  static MadLOL_Pixel imageFrame270[IMAGE_WIDTH * IMAGE_HEIGHT] = {0};
   const MadLOL_Size frameSize = {.width = IMAGE_WIDTH, .height = IMAGE_HEIGHT};
+  const MadLOL_Size frameSizeRotated = {.width = IMAGE_HEIGHT, .height = IMAGE_WIDTH};
 
   MadLOL_FrameBuffer fb = {.frame = imageFrame, .size = frameSize};
+  MadLOL_FrameBuffer fb_90 = {.frame = imageFrame90, .size = frameSizeRotated};
+  MadLOL_FrameBuffer fb_180 = {.frame = imageFrame180, .size = frameSize};
+  MadLOL_FrameBuffer fb_270 = {.frame = imageFrame270, .size = frameSizeRotated};
 
   const char filename[] = "test_image.bmp";
+  const char filename_90[] = "test_image_rotate90.bmp";
+  const char filename_180[] = "test_image_rotate180.bmp";
+  const char filename_270[] = "test_image_rotate270.bmp";
   const char message[] = "Hello, World!";
   const char contextMessage[] = "This is a test of MadLOL.";
   const char test0[31] = "THE QUICK BROWN FOX JUMPED";
@@ -66,6 +77,14 @@ int main(void) {
 
   if (!MadLOL_createBMP(fb, filename))
     printf("Aww, this shit ain't working, yo!");
+
+  MadLOL_rotateBuffer_copy(fb, fb_90, LOL_DEGREES_90);
+  MadLOL_rotateBuffer_copy(fb, fb_180, LOL_DEGREES_180);
+  MadLOL_rotateBuffer_copy(fb, fb_270, LOL_DEGREES_270);
+
+  MadLOL_createBMP(fb_90, filename_90);
+  MadLOL_createBMP(fb_180, filename_180);
+  MadLOL_createBMP(fb_270, filename_270);
 
   return 0;
 }
