@@ -15,6 +15,7 @@ $(BUILD_DIR)/$(TARGET).elf:\
 	$(BUILD_DIR)/MadLOL_char.o\
 	$(BUILD_DIR)/MadLOL_string.o\
 	$(BUILD_DIR)/MadLOL_ref_setColor.o\
+	$(BUILD_DIR)/MadLOL_transform_buffer.o\
 	$(BUILD_DIR)/MadLOL_primitive.o\
 	$(BUILD_DIR)/MadLOL_bmp.o
 
