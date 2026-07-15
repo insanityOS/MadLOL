@@ -8,8 +8,8 @@
 #define MADLOL_TRANSFORM_BUFFER_H
 
 #include <stdint.h>
-#include "MadLOL_types.h"
 #include "MadLOL_frame_buffer.h"
+#include "MadLOL_types.h"
 
 /*! @brief Rotation selection enumeration.
  *
@@ -43,8 +43,9 @@ typedef uint16_t MadLOL_Rotate_t;
  * the source buffer is of @c x width and @c y height, the destination buffer must be of @c y width and @c height. Both
  * the source and destination frame buffers must have adequate space in their internal array; this is not checked. If
  * either frame buffer contains a null pointer, this function returns @ref MadLOL_Status_e::LOL_NULLPTR. If the size of
- * the destination frame buffer (or if the source buffer size field is obviously erroneous, this function returns @ref
- * MadLOL_Status_e::LOL_BADPARAM.
+ * the destination frame buffer (or if the source buffer size field) is obviously erroneous, this function returns @ref
+ * MadLOL_Status_e::LOL_BADBOUNDS. If the @c rotation parameter is not one of the values in @ref MadLOL_Rotate_e, this
+ * function returns @ref MadLOL_Status_e::LOL_BADPARAM.
  *
  *  @param fb_src: Source frame buffer from which to copy/rotate.
  *  @param fb_dst: Destination frame buffer into which to paste rotated image.
@@ -52,5 +53,7 @@ typedef uint16_t MadLOL_Rotate_t;
  *  @returns Returns @ref MadLOL_Status_e::LOL_SUCCESS if successful, relevant failure otherwise.
  *  @post Contents of @c fb_src are rotated into @c fb_dst.
  */
-MadLOL_Status_t MadLOL_rotateBuffer_copy(const MadLOL_FrameBuffer fb_src, MadLOL_FrameBuffer fb_dst, MadLOL_Rotate_t rotation);
+MadLOL_Status_t MadLOL_rotateBuffer_copy(const MadLOL_FrameBuffer fb_src,
+                                         MadLOL_FrameBuffer fb_dst,
+                                         MadLOL_Rotate_t rotation);
 #endif
