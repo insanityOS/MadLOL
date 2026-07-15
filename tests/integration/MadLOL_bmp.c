@@ -33,7 +33,8 @@ bool MadLOL_createBMP(MadLOL_FrameBuffer fb, const char filename[]) {
   uint32_t width_in_bytes = ((fb.size.width * bitcount + 15) / 16) * 2;
   uint32_t image_size = width_in_bytes * fb.size.height;
 
-  MadLOL_BMPHeader header = {.bfSize = image_size + 54, .bfOffBits = 54};
+  uint32_t mask[3] = {0xF800U, 0x07E0U, 0x001FU};
+  MadLOL_BMPHeader header = {.bfSize = image_size + 54 + sizeof(mask), .bfOffBits = 54 + sizeof(mask)};
 
   // Magic bullshit for telling image rendering program that this is, in fact, a bitmap.
   memcpy(&header, "BM", 2);
@@ -42,6 +43,7 @@ bool MadLOL_createBMP(MadLOL_FrameBuffer fb, const char filename[]) {
                                      .biWidth = fb.size.width,
                                      .biHeight = fb.size.height,
                                      .biBitCount = bitcount,
+                                     .biCompression = 3,
                                      .biSizeImage = image_size};
 
   if ((sizeof(MadLOL_BMPHeader) != 14) || (sizeof(MadLOL_BMPInfoHeader) != 40)) {
@@ -62,6 +64,7 @@ bool MadLOL_createBMP(MadLOL_FrameBuffer fb, const char filename[]) {
 
   fwrite(&header, sizeof(header), 1, fout);
   fwrite(&infoHeader, sizeof(infoHeader), 1, fout);
+  fwrite(mask, sizeof(mask), 1, fout);
   fwrite((char*)fb.frame, 1, image_size, fout);
   fclose(fout);
 
